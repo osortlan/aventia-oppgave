@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
-  imports: [],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  styleUrls: ['./login.component.css'],
+  standalone: true,
+  imports: [FormsModule]
 })
 export class LoginComponent {
-
+  onSubmit() {
+    // Handle login logic here
+    console.log('Form submitted');
+  }
 }
