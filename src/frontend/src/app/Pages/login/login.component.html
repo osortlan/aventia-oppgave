@@ -1,4 +1,4 @@
-<form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+<form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
     <div>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" ngModel required>

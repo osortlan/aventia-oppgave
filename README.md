@@ -9,6 +9,7 @@ Strømmingsvennlig API-løsning med sanntidsfunksjonalitet
         - Brukere skal kunne logge inn med mail/passord.
         Feilhåndtering:
         - ugyldig brukernavn/passord
+        - sesjon utløpt
     Tekniske krav: 
         - Brukere får JWT som kan brukes for api kall
         - JWT hentes ved POST /api/auth/login
