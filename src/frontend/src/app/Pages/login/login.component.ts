@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
+import { AuthService } from '../../Auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,17 +12,25 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 
-  constructor(private router: Router){}
+  constructor(private authService: AuthService, private router: Router){}
+
+  isProcessing = false;
 
   onSubmit(form: NgForm) {
+    this.isProcessing = true;
+
     const username = form.value.username;
     const password = form.value.password;
 
+    this.authService.logIn(username, password, () => {
+      this.router.navigate(['/']);
+    }, () => {
+      this.isProcessing = false;
+    });
+
     //console.log('Username:', username);
     //console.log('Password:', password);
-
-    localStorage.setItem("accessToken", "the-token");
-
-    this.router.navigate(['/']);
+    //localStorage.setItem("accessToken", "the-token");
+    
   }
 }

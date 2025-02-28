@@ -2,17 +2,20 @@
 Strømmingsvennlig API-løsning med sanntidsfunksjonalitet
 
 
-Prosess:
+# Om besvarelsen
+
+
+# Prosess:
 1. gruppering av krav og funksjoner 
 2. ui-design
 3. definere brukerhistorier med krav, feilhåndtering/edgecases og (left shift) tester
-4. teknisk løsningforslag
+4. arkitektur & teknisk løsningforslag
 5. implementering
 6. doc
 
 
 # Brukerhistorier:
-- Innlogging: Jeg må kunne logge inn
+US-1: Innlogging: Jeg må kunne logge inn
     Funksjonelle Krav: 
         - Brukere skal kunne logge inn med mail/passord.
     Tekniske krav: 
@@ -29,7 +32,7 @@ Prosess:
         - login, vent til token expirer, refresh på hovedsiden - verifiser redirect til login-side, du får session-utløpt-feilmelding, token er clearet fra session store
 
 
-- Liste strømmesesjoner: Jeg trenger en liste over alle aktive strømmesesjoner
+US-2: Liste strømmesesjoner: Jeg trenger en liste over alle aktive strømmesesjoner
     Funksjonelle Krav: 
         - bruker skal få listet opp alle eksisterende aktive (!) strømmesesjoner.
     Tekniske krav:
@@ -37,7 +40,7 @@ Prosess:
     Test: log inn og se at sesjoner dukker opp.
 
 
-- Opprett ny strømmesesjon: Side der jeg kan fylle inn info som trengs og opprette ny strømmesesjon
+US-3: Opprett ny strømmesesjon: Side der jeg kan fylle inn info som trengs og opprette ny strømmesesjon
     Funksjonelle Krav: 
         - Knapp for å opprette en ny sesjon på hovedside
     Tekniske krav:
@@ -49,7 +52,7 @@ Prosess:
     Test: fyll inn greier, trykk OK, verifiser at du returneres og ny sesjon er i liste med riktig navn osv.
 
 
-- Sanntidsoppdateringer:
+US-4: Sanntidsoppdateringer:
     Funksjonelle Krav: 
         - Når en ny strømmesesjon opprettes, skal alle tilkoblede klienter få beskjed via SignalR.
     Tekniske krav:
@@ -64,5 +67,11 @@ Generelle tekniske krav:
 - entity framework core mot database
 
 
-NOTES:
+# Arkitektur
+
+
+# NOTES/TODOs:
 - aktive strømmesesjoner?
+- hardcoded urls in frontend
+- cors urls
+- subscribe() deprecated

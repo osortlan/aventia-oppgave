@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace backend.Auth;
@@ -14,8 +15,10 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("/api/auth/login")]
-    public string Post(GetTokenRequest request)
+    public IActionResult Post(GetTokenRequest request)
     {
-        return "Hello-World";
+        if(request.username == "a" && request.password == "b")
+            return Ok(new GetTokenResponse("Hello-World"));
+        return Unauthorized("Wrong username or password");
     }
 }
