@@ -54,7 +54,7 @@ export class AuthService {
     error => {
       console.log(JSON.stringify(error));
       console.log(error.status);
-      if(error.status == 403)
+      if(error.status == 400)
       {
         onError("Wrong username or password");
       }

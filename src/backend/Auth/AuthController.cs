@@ -19,6 +19,6 @@ public class AuthController : ControllerBase
     {
         if(request.username == "a" && request.password == "b")
             return Ok(new GetTokenResponse("Hello-World"));
-        return Unauthorized("Wrong username or password");
+        return BadRequest("Wrong username or password");
     }
 }
