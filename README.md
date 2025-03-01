@@ -77,7 +77,15 @@ Generelle tekniske krav:
 - aktive strømmesesjoner?
 - hardcoded urls in frontend
 - cors urls
-- subscribe() deprecated
+- subscribe() deprecated, 
+- husk insomnia export
+
+
+# andre ideer
+- hosting i Azure
+- IaC med terraform
+- CI/CD med github actions
+- generert api spec for frontend
 
 
 # vedlegg:

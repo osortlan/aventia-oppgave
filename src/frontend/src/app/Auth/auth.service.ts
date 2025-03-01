@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -49,7 +50,7 @@ export class AuthService {
       }
       else
       {
-        throw new Error('Unexpected error from API: ' + error.error);
+        throwError(() => error);
       }
     });
   }
