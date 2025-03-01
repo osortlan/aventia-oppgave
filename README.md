@@ -82,6 +82,7 @@ Generelle tekniske krav:
 - backend namespaces
 - unittests
 - backend dao vs models
+- vulnerabilities
 
 
 # andre ideer

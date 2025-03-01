@@ -9,6 +9,7 @@ builder.Services.AddCors(options =>
 {    
     options.AddPolicy("AllowLocalhost",
         builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+            .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
@@ -36,6 +37,7 @@ builder.Services.AddDbContext<StreamSessionContext>(options =>
 
 builder.Services.AddScoped<IQueryHandler<GetStreamSessionsResponse>, GetStreamSessionsHandler>();
 builder.Services.AddScoped<ICommandHandler<CreateStreamSessionRequest>, CreateStreamSessionHandler>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddSignalR();
@@ -60,6 +62,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-app.MapHub<ChatHub>("/chatHub");
+app.MapHub<NotificationHub>("/notification");
 
 app.Run();
