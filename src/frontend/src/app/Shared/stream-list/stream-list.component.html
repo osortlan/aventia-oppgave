@@ -3,7 +3,7 @@
         <div class="col-12">
             <h2 class="text-left">Active stream sessions:</h2>            
             <ul class="list-group">
-                <li class="list-group-item" *ngFor="let stream of streamSessions">{{ stream.title }}</li>
+                <li class="list-group-item" [ngClass]="{ 'flash': stream.isNew }" *ngFor="let stream of streamSessions">{{ stream.title }}</li>
             </ul>
             <div class="d-flex justify-content-end mt-3">
                 <button *ngIf="!isProcessing" class="btn btn-primary" (click)="newStreamSession()">New Stream Session</button>

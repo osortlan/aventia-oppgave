@@ -1,4 +1,4 @@
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StreamService } from '../../Services/stream.service';
 import { StreamSession } from '../../Model/StreamSession';
@@ -6,7 +6,7 @@ import { NotificationService } from '../../Services/notification.service';
 
 @Component({
   selector: 'stream-list',
-  imports: [NgFor, NgIf],
+  imports: [NgFor, NgIf, NgClass],
   templateUrl: './stream-list.component.html',
   styleUrl: './stream-list.component.css'
 })
@@ -14,7 +14,7 @@ export class StreamListComponent implements OnInit {
 
   constructor(private streamService: StreamService, private notificationService: NotificationService) {}
 
-  streamSessions: StreamSession[] = [];
+  streamSessions: any[] = [];
   isProcessing = false;
 
   ngOnInit() 
@@ -24,12 +24,15 @@ export class StreamListComponent implements OnInit {
     });
 
     this.notificationService.addReceiveMessageListener((notificationType: string, message: string, data: StreamSession) => {
-      this.streamSessions.push(data);
+      this.streamSessions.push({
+        title: data.title,
+        isNew: true,
+      });
     });
   }
 
   newStreamSession() {
-    const newItem: StreamSession = {
+    const newItem = {
       title: "A new stream session",
     };
 
