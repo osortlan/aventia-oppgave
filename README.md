@@ -84,6 +84,7 @@ Generelle tekniske krav:
 - backend dao vs models
 - vulnerabilities
 - message-box timeout to config
+- clean OnInit inheritence, not needed
 
 
 # andre ideer

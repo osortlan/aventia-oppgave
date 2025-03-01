@@ -22,6 +22,8 @@ export class AuthService {
     return true;
   }
 
+
+
   verifyLoggedInOrRedirect(): void
   {
     var accessToken = localStorage.getItem("accessToken");
