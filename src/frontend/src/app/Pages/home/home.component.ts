@@ -9,6 +9,4 @@ import { StreamListComponent } from '../../Shared/stream-list/stream-list.compon
 })
 export class HomeComponent  {
   constructor() {}
-  
-
 }

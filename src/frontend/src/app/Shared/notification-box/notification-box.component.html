@@ -1,0 +1,11 @@
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div class="toast" role="alert" aria-live="assertive" aria-atomic="true" [class.show]="showMessage">
+        <div class="toast-header">
+            <strong class="me-auto">Notification</strong>
+            <button type="button" class="btn-close" (click)="hideMessage()" aria-label="Close"></button>
+        </div>
+        <div class="toast-body">
+            {{message}}
+        </div>
+    </div>
+</div>

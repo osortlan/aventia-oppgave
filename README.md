@@ -83,6 +83,7 @@ Generelle tekniske krav:
 - unittests
 - backend dao vs models
 - vulnerabilities
+- message-box timeout to config
 
 
 # andre ideer
