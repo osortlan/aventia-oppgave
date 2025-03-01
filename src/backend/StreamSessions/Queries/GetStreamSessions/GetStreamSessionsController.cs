@@ -10,8 +10,4 @@ public class GetStreamSessionsController(IRequestHandler<GetStreamSessionsRespon
     [HttpGet("/api/stream")]
     public IActionResult Get() => 
         Ok(requestHandler.Handle());
-
-    /*[HttpGet("/api/stream")]
-    public IActionResult Get() => 
-        Ok("nice!");*/
 }

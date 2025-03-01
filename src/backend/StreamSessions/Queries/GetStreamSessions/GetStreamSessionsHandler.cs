@@ -1,12 +1,8 @@
-public class GetStreamSessionsHandler : IRequestHandler<GetStreamSessionsResponse>
-{
-    public GetStreamSessionsResponse Handle()
-    {
-        var streamSessions = new [] {
-            new StreamSession ("kjeks"),
-            new StreamSession ("Kake"),
-            new StreamSession ("Bjørn"),
-        };
-        return new GetStreamSessionsResponse(streamSessions.ToList());
-    }
+public class GetStreamSessionsHandler(StreamSessionContext streamSessionContext) : IRequestHandler<GetStreamSessionsResponse>
+{   
+
+    public GetStreamSessionsResponse Handle() =>
+        new GetStreamSessionsResponse(streamSessionContext.StreamSessions.ToList());
+        
+    
 }

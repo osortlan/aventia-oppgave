@@ -1,2 +1,2 @@
 
-public record StreamSession(string title);
+public record StreamSession(int id, string title);
