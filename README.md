@@ -1,3 +1,6 @@
+
+
+
 # aventia-oppgave
 Strømmingsvennlig API-løsning med sanntidsfunksjonalitet
 
@@ -29,7 +32,7 @@ US-1: Innlogging: Jeg må kunne logge inn
     Test: 
         - fyll inn test@testesen.com / test123, trykk login - verifiser at det står "hallo Test Testesen e.l"
         - fyll inn noe tullball - verifiser at du får feil
-        - login, vent til token expirer, refresh på hovedsiden - verifiser redirect til login-side, du får session-utløpt-feilmelding, token er clearet fra session store
+        - login, vent til token expirer (eller leg inn gammelt accessToken i local storage), refresh på hovedsiden - verifiser redirect til login-side, du får session-utløpt-feilmelding, token er clearet fra session store
 
 
 US-2: Liste strømmesesjoner: Jeg trenger en liste over alle aktive strømmesesjoner
@@ -75,3 +78,9 @@ Generelle tekniske krav:
 - hardcoded urls in frontend
 - cors urls
 - subscribe() deprecated
+
+
+# vedlegg:
+
+vd-1. Gammelt access token (for testing):
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhIiwianRpIjoiY2E0NzhmM2YtNmMwNC00MjU1LWIxNDUtNDllMzkwMTA2OTI0IiwiZXhwIjoxNzQwODM0ODU0LCJpc3MiOiJ5b3VyZG9tYWluLmNvbSIsImF1ZCI6InlvdXJkb21haW4uY29tIn0.BK1xEnv0ERjr2gBdorGxV0maqgrKKJK9CWXtRm9sjXs

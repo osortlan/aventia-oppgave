@@ -1,15 +1,28 @@
 import { HttpInterceptorFn } from '@angular/common/http';
+import { inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { catchError, throwError } from 'rxjs';
 
 export const authInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('accessToken'); // Or wherever you store the token
 
-  if (token) {
-    const cloned = req.clone({
-      headers: req.headers.set('Authorization', `Bearer ${token}`)
-    });
+  const router = inject(Router);
 
-    return next(cloned);
-  } else {
-    return next(req);
-  }
+  // Clone the request to add the new header
+  const clonedRequest = req.clone({
+    setHeaders: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  return next(clonedRequest).pipe(
+    catchError((error) => {
+      if (error.status === 401) {
+        // Redirect to the login page
+        localStorage.removeItem('accessToken');
+        router.navigate(['/login'], {queryParams: {errorMessage: "session expired"}});
+      }
+      return throwError(() => error);
+    })
+  );
 };

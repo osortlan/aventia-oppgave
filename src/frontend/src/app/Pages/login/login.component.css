@@ -25,3 +25,12 @@ form {
   button:disabled {
     background-color: #cccccc;
   }
+
+  .error-message {
+    width: 100%; /* Match the button width */
+    height: 100px; /* Make it a square */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }

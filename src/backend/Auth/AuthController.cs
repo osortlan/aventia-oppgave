@@ -33,7 +33,7 @@ public class AuthController : ControllerBase
     [HttpGet("/api/auth/test")]
     public IActionResult Get()
     {
-        return Ok();
+        return Ok(new {msg = "foobar"});
     }
 
     private bool Authenticate(string username, string password) =>
@@ -54,7 +54,7 @@ public class AuthController : ControllerBase
             issuer: "yourdomain.com",
             audience: "yourdomain.com",
             claims: claims,
-            expires: DateTime.Now.AddMinutes(30),
+            expires: DateTime.Now.AddMinutes(2),
             signingCredentials: creds);
 
         return new JwtSecurityTokenHandler().WriteToken(token);
