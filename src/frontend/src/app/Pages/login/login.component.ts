@@ -27,10 +27,5 @@ export class LoginComponent {
     }, () => {
       this.isProcessing = false;
     });
-
-    //console.log('Username:', username);
-    //console.log('Password:', password);
-    //localStorage.setItem("accessToken", "the-token");
-    
   }
 }

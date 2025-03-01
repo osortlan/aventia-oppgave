@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -19,10 +18,6 @@ export class AuthService {
     {
       return false;
     }
-    /*else if()
-    {
-
-    }*/
     return true;
   }
 
@@ -33,15 +28,9 @@ export class AuthService {
     {
       this.router.navigate(['/login']);
     }
-    /*else if()
-    {
-      // TODO: check expiration
-    }*/
-
-    // verification passed
   }
 
-  logIn(username: string, password: string, onSuccess: () => void, onError: (response: string) => void): void
+  logIn(username: string, password: string, onSuccess: () => void, onLoginFailed: (response: string) => void): void
   {
     var postBody = {
       username: username,
@@ -56,7 +45,7 @@ export class AuthService {
       console.log(error.status);
       if(error.status == 400)
       {
-        onError("Wrong username or password");
+        onLoginFailed(error.error);
       }
       else
       {
