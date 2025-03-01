@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { StreamListComponent } from '../../Shared/stream-list/stream-list.component';
 
 @Component({
   selector: 'app-home',
-  imports: [],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrl: './home.component.css',
+  imports: [StreamListComponent]
 })
 export class HomeComponent implements OnInit {
   constructor(private http: HttpClient) {}

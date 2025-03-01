@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.activateRoute.queryParams.subscribe((params) => {
-      console.log(params['errorMessage']);
       this.errorMessage = params['errorMessage'];
     });
   }

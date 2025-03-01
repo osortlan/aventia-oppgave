@@ -37,7 +37,7 @@ US-1: Innlogging: Jeg må kunne logge inn
 
 US-2: Liste strømmesesjoner: Jeg trenger en liste over alle aktive strømmesesjoner
     Funksjonelle Krav: 
-        - bruker skal få listet opp alle eksisterende aktive (!) strømmesesjoner.
+        - bruker skal få listet opp alle eksisterende aktive (?) strømmesesjoner.
     Tekniske krav:
         - GET /api/stream.
     Test: log inn og se at sesjoner dukker opp.
