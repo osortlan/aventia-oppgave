@@ -7,6 +7,10 @@
     <label for="password" class="form-label">Password:</label>
     <input type="password" id="password" name="password" ngModel required class="form-control">
   </div>
-  <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Login</button>
+  <button *ngIf="!isProcessing" type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary">Login</button>
+  <div *ngIf="isProcessing" class="spinner-border spinner text-primary" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
   <div *ngIf="errorMessage" class="alert alert-danger mt-3 error-message">{{ errorMessage }}</div>
 </form>

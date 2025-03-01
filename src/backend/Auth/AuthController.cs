@@ -24,6 +24,8 @@ public class AuthController : ControllerBase
     [HttpPost("/api/auth/login")]
     public IActionResult Post(GetTokenRequest request)
     {
+        Thread.Sleep(4000);
+
         if(Authenticate(request.username, request.password))
             return Ok(new GetTokenResponse(GenerateToken(request.username,request.username)));
         return BadRequest("Wrong username or password");
