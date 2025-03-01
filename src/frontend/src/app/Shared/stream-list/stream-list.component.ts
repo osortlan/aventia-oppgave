@@ -1,5 +1,7 @@
 import { NgFor } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { StreamService } from '../../Services/stream.service';
+import { StreamSession } from '../../Model/StreamSession';
 
 @Component({
   selector: 'stream-list',
@@ -7,9 +9,19 @@ import { Component } from '@angular/core';
   templateUrl: './stream-list.component.html',
   styleUrl: './stream-list.component.css'
 })
-export class StreamListComponent {
+export class StreamListComponent implements OnInit {
 
-  streamSessions: any[] = [{ title: "kjeks"}, { title: "kake" }, { title: "bjørn"}]
+  constructor(private streamService: StreamService) {}
+
+  streamSessions: StreamSession[] = [];
+
+  ngOnInit() 
+  {
+    this.streamService.getStreamSessions().subscribe(response => {
+      console.log(response);
+      this.streamSessions = response;
+    });
+  }
 
   newStreamSession() {
     const newItem = {
