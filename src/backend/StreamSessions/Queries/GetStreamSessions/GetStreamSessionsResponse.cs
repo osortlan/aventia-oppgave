@@ -1,0 +1,1 @@
+public record GetStreamSessionsResponse(List<StreamSession> StreamSessions);
