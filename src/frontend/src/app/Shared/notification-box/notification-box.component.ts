@@ -16,12 +16,11 @@ export class NotificationBoxComponent {
   
   ngOnInit(): void {
 
-    setTimeout(() => {
-      this.showMessage = false;
-    }, 10000); // 10 seconds
-
-    this.notificationService.addReceiveMessageListener((message: string) => {
+    this.notificationService.addReceiveMessageListener((notificationType: string, message: string, data: any) => {
       this.showMessage = true;
+      setTimeout(() => {
+        this.showMessage = false;
+      }, 10000); // 10 seconds
       this.message = message;
     });
   }

@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.SignalR;
 
 public interface INotificationService
 {
-    Task SendNotification(string message);
+    Task SendNotification(string notificationType, string message, object data);
 }
 
 public class NotificationService : INotificationService
@@ -14,8 +14,8 @@ public class NotificationService : INotificationService
         _hubContext = hubContext;
     }
 
-    public async Task SendNotification(string message)
+    public async Task SendNotification(string notificationType, string message, object data)
     {
-        await _hubContext.Clients.All.SendAsync("ReceiveMessage", message);
+        await _hubContext.Clients.All.SendAsync("ReceiveMessage", notificationType, message, data);
     }
 }

@@ -6,6 +6,6 @@ public class CreateStreamSessionHandler(StreamSessionContext streamSessionContex
         streamSessionContext.StreamSessions.Add(streamSession);
         streamSessionContext.SaveChanges();
 
-        notificationService.SendNotification($"new stream session created: {request.title}");
+        notificationService.SendNotification("session-created", $"new stream session created: {request.title}", streamSession);
     }
 }

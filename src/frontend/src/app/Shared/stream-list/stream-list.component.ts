@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { StreamService } from '../../Services/stream.service';
 import { StreamSession } from '../../Model/StreamSession';
+import { NotificationService } from '../../Services/notification.service';
 
 @Component({
   selector: 'stream-list',
@@ -11,21 +12,25 @@ import { StreamSession } from '../../Model/StreamSession';
 })
 export class StreamListComponent implements OnInit {
 
-  constructor(private streamService: StreamService) {}
+  constructor(private streamService: StreamService, private notificationService: NotificationService) {}
 
   streamSessions: StreamSession[] = [];
   isProcessing = false;
 
-  ngOnInit()
+  ngOnInit() 
   {
     this.streamService.getStreamSessions().subscribe(response => {
       this.streamSessions = response;
+    });
+
+    this.notificationService.addReceiveMessageListener((notificationType: string, message: string, data: StreamSession) => {
+      this.streamSessions.push(data);
     });
   }
 
   newStreamSession() {
     const newItem: StreamSession = {
-      title: "I am new here",
+      title: "A new stream session",
     };
 
     this.isProcessing = true;

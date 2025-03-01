@@ -17,7 +17,7 @@ export class NotificationService {
   private apiUrl = "http://localhost:5193";
   private hubConnection: signalR.HubConnection;
 
-  public addReceiveMessageListener(callback: (user: string, message: string) => void): void {
+  public addReceiveMessageListener(callback: (notificationType: string, message: string, data: any) => void): void {
     this.hubConnection
       .start()
       .then(() => console.log('Connection started'))
