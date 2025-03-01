@@ -18,4 +18,11 @@ export class StreamService {
       map(response => response.streamSessions)
     );
   }
+
+  createStreamSession(newSessionData: StreamSession): Observable<void>
+  {
+    return this.http.post(this.apiUrl + "/api/stream", {
+      title: newSessionData.title
+    }).pipe(map(response => undefined));
+  }
 }

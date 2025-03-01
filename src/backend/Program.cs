@@ -34,9 +34,11 @@ builder.Services.AddAuthorization();
 builder.Services.AddDbContext<StreamSessionContext>(options =>
     options.UseMySql("Server=localhost;Database=StreamSessionsDb;User=root;Password=mucho-secreto;", new MySqlServerVersion(new Version(8, 0, 21))));
 
-builder.Services.AddScoped<IRequestHandler<GetStreamSessionsResponse>, GetStreamSessionsHandler>();
+builder.Services.AddScoped<IQueryHandler<GetStreamSessionsResponse>, GetStreamSessionsHandler>();
+builder.Services.AddScoped<ICommandHandler<CreateStreamSessionRequest>, CreateStreamSessionHandler>();
 
 builder.Services.AddControllers();
+builder.Services.AddSignalR();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -47,6 +49,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 //app.UseHttpsRedirection();
@@ -57,5 +60,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chatHub");
 
 app.Run();

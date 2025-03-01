@@ -79,6 +79,9 @@ Generelle tekniske krav:
 - cors urls
 - subscribe() deprecated, 
 - husk insomnia export
+- backend namespaces
+- unittests
+- backend dao vs models
 
 
 # andre ideer

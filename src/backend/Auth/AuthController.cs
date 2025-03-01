@@ -14,26 +14,12 @@ namespace backend.Auth;
 [Route("[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly ILogger<AuthController> _logger;
-
-    public AuthController(ILogger<AuthController> logger)
-    {
-        _logger = logger;
-    }
-
     [HttpPost("/api/auth/login")]
     public IActionResult Post(GetTokenRequest request)
     {
         if(Authenticate(request.username, request.password))
             return Ok(new GetTokenResponse(GenerateToken(request.username,request.username)));
         return BadRequest("Wrong username or password");
-    }
-
-    [Authorize]
-    [HttpGet("/api/auth/test")]
-    public IActionResult Get()
-    {
-        return Ok(new {msg = "foobar"});
     }
 
     private bool Authenticate(string username, string password) =>

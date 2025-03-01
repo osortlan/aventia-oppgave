@@ -1,8 +1,8 @@
-public interface IRequestHandler<TResponse>
+public interface IQueryHandler<TResponse>
 {
     TResponse Handle();
 }
-public interface IRequestHandler<TRequest, TResponse>
+public interface IQueryHandler<TRequest, TResponse>
 {
     TResponse Handle(TRequest request);
 }

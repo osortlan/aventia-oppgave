@@ -5,9 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 [Authorize]
 [ApiController]
 [Route("[controller]")]
-public class GetStreamSessionsController(IRequestHandler<GetStreamSessionsResponse> requestHandler) : ControllerBase
+public class GetStreamSessionsController(IQueryHandler<GetStreamSessionsResponse> queryHandler) : ControllerBase
 {
     [HttpGet("/api/stream")]
     public IActionResult Get() => 
-        Ok(requestHandler.Handle());
+        Ok(queryHandler.Handle());
 }
