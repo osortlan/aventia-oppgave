@@ -74,17 +74,11 @@ Generelle tekniske krav:
 
 
 # NOTES/TODOs:
-- aktive strømmesesjoner?
-- hardcoded urls in frontend
-- cors urls
 - subscribe() deprecated, 
 - husk insomnia export
-- backend namespaces
 - unittests
 - backend dao vs models
 - vulnerabilities
-- message-box timeout to config
-- clean OnInit inheritence, not needed
 
 
 # andre ideer
@@ -94,6 +88,7 @@ Generelle tekniske krav:
 - generert api spec for frontend
 - statistikk & log med application insights
 - Autentisering med Entra, evt password salt & hash
+- Unexpected error håndtering
 
 
 # dev setup prerequisites
