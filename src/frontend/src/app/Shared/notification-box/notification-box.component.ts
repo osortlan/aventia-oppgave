@@ -22,7 +22,7 @@ export class NotificationBoxComponent {
       setTimeout(() => {
         this.showMessage = false;
         this.message = "";
-      }, this.config.getConfig('notificationMessageDurationMs')); // 10 seconds
+      }, this.config.getConfig('notificationMessageDurationMs'));
       this.message = message;
     });
   }

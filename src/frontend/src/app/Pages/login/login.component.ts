@@ -13,7 +13,7 @@ import { NgIf } from '@angular/common';
 })
 export class LoginComponent {
 
-  constructor(private authService: AuthService, private router: Router, private activateRoute: ActivatedRoute ){}
+  constructor(private authService: AuthService, private router: Router, private activateRoute: ActivatedRoute){}
 
   isProcessing = false;
   errorMessage = "";
