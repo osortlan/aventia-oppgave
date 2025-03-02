@@ -2,7 +2,10 @@ public class CreateStreamSessionHandler(StreamSessionContext streamSessionContex
 {
     public void Handle(CreateStreamSessionRequest request)
     {
-        var streamSession = new StreamSession(0, request.title);
+        var streamSession = new StreamSessionDao
+        {
+            Title = request.title
+        };
         streamSessionContext.StreamSessions.Add(streamSession);
         streamSessionContext.SaveChanges();
 

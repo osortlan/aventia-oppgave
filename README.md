@@ -22,7 +22,6 @@
 # NOTES/TODOs:
 - subscribe() deprecated
 - unittests
-- backend dao vs models
 - vulnerabilities
 
 
