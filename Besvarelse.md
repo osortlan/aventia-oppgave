@@ -9,7 +9,7 @@ I løsingen av oppgaven har jeg brukt en enkel stegvis prosess:
 3. Utforming brukerhistorier
 4. Arkitekturvalg
 5. Implementering
-6. Doc
+6. Doc (README.md)
 
 Jeg begyynte med å skille funksjonelle krav som kan oppleves av brukere fra tekniske krav.
 Dette er viktig, fordi det er førstnevnte som leverer verdi. Tekniske krav tenker jeg på som
@@ -81,7 +81,7 @@ US-4: Sanntidsoppdateringer:
         - Når en ny strømmesesjon opprettes, skal alle tilkoblede klienter få beskjed via SignalR.
     Tekniske krav:
         - SignalR for sanntidsoppdateringer
-    Test: Log inn med to forsjellige brukere i to forsjellige nett-sesjoner og opprett ny sesjon i første nettsesjon og verifiser oppdatering i andre nettsesjon
+    Test: Log inn, opprett ny sessjon i insomnia (collection vedlagt) - verifiser at ny sesjon dukker opp i viewet
 
 
 I tillegg noterer jeg meg følgende generelle tekniske krav:
@@ -115,11 +115,13 @@ mappestruktur preget av navn og beskrivelser fra domenet, noe jeg liker (istedet
     - CreateStreamSessionCommand
 /Common <- divere delte ting
 
+# Mulige forbedringer
 Det er også mange artige ting man kunne legge til den tekniske løsningen (med eksempel på teknologivalg):
 - hosting i Azure (frontend, backend, db, keyvault)
 - IaC med terraform
 - CI/CD med github actions
-- generert api spec for frontend
+- EF Migrations og Code first for databaseendringer
+- generert api spec i TypeScript for frontend
 - statistikk & log med application insights
 - Autentisering brukere med Entra
 - Autentisering tjenester med Entra og DefaultAzureCredential for SSO

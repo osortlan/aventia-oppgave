@@ -21,8 +21,7 @@
 
 
 # NOTES/TODOs:
-- subscribe() deprecated, 
-- husk insomnia export
+- subscribe() deprecated
 - unittests
 - backend dao vs models
 - vulnerabilities
