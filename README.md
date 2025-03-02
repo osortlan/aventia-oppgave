@@ -88,11 +88,20 @@ Generelle tekniske krav:
 
 
 # andre ideer
-- hosting i Azure
+- hosting i Azure (frontend, backend, db, keyvault)
 - IaC med terraform
 - CI/CD med github actions
 - generert api spec for frontend
+- statistikk & log med application insights
 
+
+# dev setup prerequisites
+- dotnet
+- node & npm
+- angular
+- docker
+- docker compose (optional)
+- set env var Auth__SignatureSecret (eller fake i launchSettings.json)
 
 # vedlegg:
 

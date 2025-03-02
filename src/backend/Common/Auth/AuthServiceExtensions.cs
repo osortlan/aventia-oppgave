@@ -4,21 +4,20 @@ using Microsoft.IdentityModel.Tokens;
 
 public static class AuthServiceExtensions
 {
-    public static IServiceCollection AddTokenAuthorization(this IServiceCollection services)
+    public static IServiceCollection AddTokenAuthorization(this IServiceCollection services, AuthServiceOptions authOptions)
     {
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(options =>
             {
-                options.UseSecurityTokenValidators = true;
                 options.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = "yourdomain.com",
-                    ValidAudience = "yourdomain.com",
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("hoihgihoisrhgoioiuaoarghirgpahguhagoiphrguhgapohgpohagphgpiahgrsghisuhgsoihgiouhsioghtsiuhgoihtriouhgioshgsigsihisuhgishtiushigtousihutgisuhitghsoig"))
+                    ValidIssuer = authOptions.DomainName,
+                    ValidAudience = authOptions.DomainName,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authOptions.TokenSignatureSecret))
                 };
             });
         services.AddAuthorization();

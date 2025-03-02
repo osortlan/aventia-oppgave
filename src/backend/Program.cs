@@ -15,10 +15,16 @@ builder.Services.AddCors(options =>
 });
 
 //var signatureSecret = builder.Configuration.GetValue<string>("signatureSecret")!.ToString();
-builder.Services.AddTokenAuthorization();
+var authConfig = builder.Configuration.GetSection("Auth").Get<AuthServiceOptions>()!;
+builder.Services.AddTokenAuthorization(authConfig);
 
 builder.Services.AddDbContext<StreamSessionContext>(options =>
     options.UseMySql("Server=localhost;Database=StreamSessionsDb;User=root;Password=mucho-secreto;", new MySqlServerVersion(new Version(8, 0, 21))));
+
+
+//builder.Configuration.GetSection(nameof(AuthServiceOptions))
+//    .Bind(options);
+builder.Services.Configure<AuthServiceOptions>(builder.Configuration.GetSection("Auth"));
 
 builder.Services.AddSingleton<IAuthService,AuthService>();
 builder.Services.AddScoped<INotificationService, NotificationService>();
