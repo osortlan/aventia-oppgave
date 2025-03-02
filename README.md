@@ -1,4 +1,3 @@
-
 ## Strømmingsvennlig API-løsning med sanntidsfunksjonalitet
 
 # dev setup prerequisites
