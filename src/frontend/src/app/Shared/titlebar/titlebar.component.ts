@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../Auth/auth.service';
 
 @Component({
   selector: 'app-titlebar',
@@ -9,10 +8,4 @@ import { AuthService } from '../../Auth/auth.service';
 })
 export class TitlebarComponent 
 {
-  constructor(private authService: AuthService)
-  {
-    this.loggedInUsername = authService.getLoggedInUsername();
-  }
-  
-  loggedInUsername = "";
 }

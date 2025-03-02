@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NotificationService } from '../../Services/notification.service';
+import { ConfigService } from '../../Services/config.service';
 
 @Component({
   selector: 'app-notification-box',
@@ -9,7 +10,7 @@ import { NotificationService } from '../../Services/notification.service';
 })
 export class NotificationBoxComponent {
 
-  constructor(private notificationService: NotificationService){}
+  constructor(private config: ConfigService, private notificationService: NotificationService){}
 
   showMessage = false;
   message = "";
@@ -20,7 +21,8 @@ export class NotificationBoxComponent {
       this.showMessage = true;
       setTimeout(() => {
         this.showMessage = false;
-      }, 10000); // 10 seconds
+        this.message = "";
+      }, this.config.getConfig('notificationMessageDurationMs')); // 10 seconds
       this.message = message;
     });
   }

@@ -2,15 +2,14 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { throwError } from 'rxjs';
+import { ConfigService } from '../Services/config.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
 
-  constructor(private router: Router, private http: HttpClient) { }
-
-  private apiUrl = "http://localhost:5193/api/auth/login";
+  constructor(private config: ConfigService, private router: Router, private http: HttpClient) { }
 
   isLoggedIn(): boolean
   {
@@ -32,7 +31,7 @@ export class AuthService {
 
     const payload = JSON.parse(atob(accessToken.split('.')[1]));
     
-    return payload.iss;
+    return payload.sub;
   }
 
   verifyLoggedInOrRedirect(): void
@@ -50,13 +49,11 @@ export class AuthService {
       username: username,
       password: password,
     };
-    this.http.post<any>(this.apiUrl, postBody).subscribe(response => {
+    this.http.post<any>(this.config.getConfig('apiBaseUrl') + "/api/auth/login", postBody).subscribe(response => {
       localStorage.setItem("accessToken", response.accessToken)
       onSuccess();
     },
     error => {
-      console.log(JSON.stringify(error));
-      console.log(error.status);
       if(error.status == 400)
       {
         onLoginFailed(error.error);
@@ -68,4 +65,3 @@ export class AuthService {
     });
   }
 }
-

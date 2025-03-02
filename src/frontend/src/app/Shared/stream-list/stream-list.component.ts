@@ -1,5 +1,5 @@
 import { NgClass, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { StreamService } from '../../Services/stream.service';
 import { StreamSession } from '../../Model/StreamSession';
 import { NotificationService } from '../../Services/notification.service';
@@ -10,7 +10,7 @@ import { NotificationService } from '../../Services/notification.service';
   templateUrl: './stream-list.component.html',
   styleUrl: './stream-list.component.css'
 })
-export class StreamListComponent implements OnInit {
+export class StreamListComponent {
 
   constructor(private streamService: StreamService, private notificationService: NotificationService) {}
 
@@ -31,7 +31,7 @@ export class StreamListComponent implements OnInit {
     });
   }
 
-  newStreamSession() {
+  newStreamSession(): void {
     const newItem = {
       title: "A new stream session",
     };

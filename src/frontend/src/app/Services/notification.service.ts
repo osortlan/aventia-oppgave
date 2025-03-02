@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import * as signalR from '@microsoft/signalr';
 import { throwError } from 'rxjs';
+import { ConfigService } from './config.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NotificationService {
 
-  constructor() 
+  constructor(private config: ConfigService) 
   { 
     this.hubConnection = new signalR.HubConnectionBuilder()
-    .withUrl(this.apiUrl + '/notification')
+    .withUrl(this.config.getConfig('apiBaseUrl') + '/notification')
     .build();
   }
 
-  private apiUrl = "http://localhost:5193";
   private hubConnection: signalR.HubConnection;
 
   public addReceiveMessageListener(callback: (notificationType: string, message: string, data: any) => void): void {
