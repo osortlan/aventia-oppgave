@@ -18,13 +18,6 @@
 - logg inn med 'test@testesen.no' og 'test123'
 - lag noen strømmesesjoner og ha det gøy :)
 
-
-# NOTES/TODOs:
-- subscribe() deprecated
-- unittests
-- vulnerabilities
-
-
 # vedlegg:
 Gammelt access token (for testing):
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiIiwianRpIjoiMmQ2NzY0ZmUtNjU5MC00ODAyLTgwNDYtOGI0ODE3YjFiNjc4IiwiZXhwIjoxNzQwOTMwNTk5LCJpc3MiOiJhdmVudGlhLm5vIiwiYXVkIjoiYXZlbnRpYS5ubyJ9.RQ43iBr7RhXx831OyeVpwguvap7IzeCOg9JJpuBPv8A
