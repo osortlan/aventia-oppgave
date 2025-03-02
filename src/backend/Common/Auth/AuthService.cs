@@ -1,31 +1,19 @@
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Security.Claims;
 using System.Text;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
-namespace backend.Auth;
-
-[ApiController]
-[Route("[controller]")]
-public class AuthController : ControllerBase
+public interface IAuthService
 {
-    [HttpPost("/api/auth/login")]
-    public IActionResult Post(GetTokenRequest request)
-    {
-        if(Authenticate(request.username, request.password))
-            return Ok(new GetTokenResponse(GenerateToken(request.username,request.username)));
-        return BadRequest("Wrong username or password");
-    }
-
-    private bool Authenticate(string username, string password) =>
+    bool Authenticate(string username, string password);
+    string GenerateToken(string username);
+}
+public class AuthService : IAuthService
+{
+    public bool Authenticate(string username, string password) =>
         username == "a" && password == "a";
-    
-    private string GenerateToken(string id, string username)
+
+    public string GenerateToken(string username)
     {
         var claims = new[]
         {

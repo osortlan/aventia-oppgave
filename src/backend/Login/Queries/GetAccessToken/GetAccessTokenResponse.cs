@@ -1,0 +1,1 @@
+public record GetAccessTokenResponse(string? accessToken, string? error);

@@ -1,0 +1,1 @@
+public record GetAccessTokenRequest(string username, string password);
