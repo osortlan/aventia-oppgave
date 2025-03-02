@@ -6,4 +6,4 @@ CREATE TABLE StreamSessions (
     title VARCHAR(100)
 );
 
-INSERT INTO StreamSessions (title) VALUES ('kalle'), ('foobar'), ('volvo');
+INSERT INTO StreamSessions (title) VALUES ('Strom styremote fra Steen & Strom'), ('Strom om vassdrag og sterk strom'), ('Vi strommer spising a surstromning');

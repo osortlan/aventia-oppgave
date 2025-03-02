@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { StreamService } from '../../Services/stream.service';
 import { StreamSession } from '../../Model/StreamSession';
 import { NotificationService } from '../../Services/notification.service';
+import { AuthService } from '../../Auth/auth.service';
 
 @Component({
   selector: 'stream-list',
@@ -12,7 +13,7 @@ import { NotificationService } from '../../Services/notification.service';
 })
 export class StreamListComponent {
 
-  constructor(private streamService: StreamService, private notificationService: NotificationService) {}
+  constructor(private streamService: StreamService, private authService: AuthService, private notificationService: NotificationService) {}
 
   streamSessions: any[] = [];
   isProcessing = false;
@@ -32,8 +33,10 @@ export class StreamListComponent {
   }
 
   newStreamSession(): void {
+    const username = this.authService.getLoggedInUsername();
+    const now = new Date();
     const newItem = {
-      title: "A new stream session",
+      title: `Strømmesesjon startet av ${username} den ${now.toLocaleString()}`,
     };
 
     this.isProcessing = true;

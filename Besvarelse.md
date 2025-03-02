@@ -126,3 +126,5 @@ Det er også mange artige ting man kunne legge til den tekniske løsningen (med 
 - Autentisering brukere med Entra
 - Autentisering tjenester med Entra og DefaultAzureCredential for SSO
 - Alerts for uventede systemfeil og proaktiv kartlegging av feil
+- Config fil frontend (per nå hardkodet i Config-tjeneste)
+- Testkjøring i pipelines
