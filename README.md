@@ -101,6 +101,7 @@ Generelle tekniske krav:
 - angular
 - docker
 - docker compose (optional)
+- wsl
 - set env var Auth__SignatureSecret (eller fake i launchSettings.json)
 
 # vedlegg:

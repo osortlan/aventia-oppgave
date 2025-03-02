@@ -1,29 +1,23 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-
 var builder = WebApplication.CreateBuilder(args);
 
+var allowedOrigin = builder.Configuration.GetValue<string>("AllowedOrigin");
 builder.Services.AddCors(options =>
 {    
     options.AddPolicy("AllowLocalhost",
-        builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost")
+        builder => builder.SetIsOriginAllowed(origin => new Uri(origin).Host == allowedOrigin)
             .AllowCredentials()
             .AllowAnyMethod()
             .AllowAnyHeader());
 });
 
-//var signatureSecret = builder.Configuration.GetValue<string>("signatureSecret")!.ToString();
-var authConfig = builder.Configuration.GetSection("Auth").Get<AuthServiceOptions>()!;
-builder.Services.AddTokenAuthorization(authConfig);
+builder.Services.AddTokenAuthorization(
+    builder.Configuration.GetSection(AuthServiceOptions.SectionName).Get<AuthServiceOptions>()!
+);
 
-builder.Services.AddDbContext<StreamSessionContext>(options =>
-    options.UseMySql("Server=localhost;Database=StreamSessionsDb;User=root;Password=mucho-secreto;", new MySqlServerVersion(new Version(8, 0, 21))));
+builder.Services.AddMysqlDatabase(
+    builder.Configuration.GetSection(DatabaseOptions.SectionName).Get<DatabaseOptions>()!
+);
 
-
-//builder.Configuration.GetSection(nameof(AuthServiceOptions))
-//    .Bind(options);
 builder.Services.Configure<AuthServiceOptions>(builder.Configuration.GetSection("Auth"));
 
 builder.Services.AddSingleton<IAuthService,AuthService>();

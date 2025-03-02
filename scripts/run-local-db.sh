@@ -1,0 +1,1 @@
+docker compose -f local-db-docker-compose.yml up -d

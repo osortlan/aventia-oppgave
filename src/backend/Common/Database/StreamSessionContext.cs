@@ -6,6 +6,5 @@ public class StreamSessionContext : DbContext
 
     public StreamSessionContext(DbContextOptions<StreamSessionContext> options)
         : base(options)
-    {
-    }
+    {}
 }

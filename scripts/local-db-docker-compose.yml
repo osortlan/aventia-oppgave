@@ -3,7 +3,7 @@ services:
     image: mysql:latest
     container_name: mysql-aventia-oppgave
     environment:
-      MYSQL_ROOT_PASSWORD: mucho-secreto
+      MYSQL_ROOT_PASSWORD: "mysqldbpassword"
     volumes:
       - ./:/docker-entrypoint-initdb.d
     ports:
