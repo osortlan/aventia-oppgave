@@ -11,11 +11,12 @@
 
 # dev setup
 - set env var Auth__SignatureSecret (eller fake i launchSettings.json)
+  like 'hoihgihoisrhgoioiuaoarghirgpahguhagoiphrguhgapohgpohagphgpiahgrsg' (must be a bit long)
 - kjør `/scripts/run-local-db.sh` for å starte database lokalt
 - kjør `dotnet run` under /backen
 - Kjør `ng serve` under /frontend
 - naviger til http://localhost:4200/
-- logg inn med 'test@testesen.no' og 'pass123'
+- logg inn med 'test@testesen.no' og 'test123'
 - lag noen strømmesesjoner og ha det gøy :)
 
 
