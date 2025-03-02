@@ -11,10 +11,8 @@ export class TitlebarComponent
 {
   constructor(private authService: AuthService)
   {
-    this.isLoggedIn = authService.isLoggedIn();
+    this.loggedInUsername = authService.getLoggedInUsername();
   }
   
-  isLoggedIn = false;
-
-
+  loggedInUsername = "";
 }

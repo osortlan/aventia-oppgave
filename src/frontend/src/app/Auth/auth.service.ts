@@ -22,7 +22,18 @@ export class AuthService {
     return true;
   }
 
+  getLoggedInUsername(): string
+  {
+    var accessToken = localStorage.getItem("accessToken");
+    if(!accessToken)
+    {
+      return "";
+    }
 
+    const payload = JSON.parse(atob(accessToken.split('.')[1]));
+    
+    return payload.iss;
+  }
 
   verifyLoggedInOrRedirect(): void
   {
@@ -57,3 +68,4 @@ export class AuthService {
     });
   }
 }
+
