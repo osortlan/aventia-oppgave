@@ -18,10 +18,10 @@ builder.Services.AddMysqlDatabase(
     builder.Configuration.GetSection(DatabaseOptions.SectionName).Get<DatabaseOptions>()!
 );
 
-builder.Services.Configure<AuthServiceOptions>(builder.Configuration.GetSection("Auth"));
+builder.Services.Configure<AuthServiceOptions>(builder.Configuration.GetSection(AuthServiceOptions.SectionName));
 
 builder.Services.AddSingleton<IAuthService,AuthService>();
-builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddSingleton<INotificationService, NotificationService>();
 builder.Services.AddScoped<IQueryHandler<GetAccessTokenRequest, GetAccessTokenResponse>, GetAccessTokenHandler>();
 builder.Services.AddScoped<IQueryHandler<GetStreamSessionsResponse>, GetStreamSessionsHandler>();
 builder.Services.AddScoped<ICommandHandler<CreateStreamSessionRequest>, CreateStreamSessionHandler>();
