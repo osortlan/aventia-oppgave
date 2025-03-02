@@ -93,6 +93,7 @@ Generelle tekniske krav:
 - CI/CD med github actions
 - generert api spec for frontend
 - statistikk & log med application insights
+- Autentisering med Entra, evt password salt & hash
 
 
 # dev setup prerequisites

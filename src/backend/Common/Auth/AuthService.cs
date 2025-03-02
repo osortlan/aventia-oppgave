@@ -9,6 +9,11 @@ public interface IAuthService
     bool Authenticate(string username, string password);
     string GenerateToken(string username);
 }
+public class AuthServiceOptionsUser
+{
+    public string Username { get; init; } = string.Empty;
+    public string Password { get; init; } = string.Empty;
+}
 public class AuthServiceOptions
 {
     public const string SectionName = "Auth";
@@ -16,11 +21,13 @@ public class AuthServiceOptions
     public string DomainName { get; init; } = string.Empty;
     public int TokeDurationMin { get; init; }
     public string TokenSignatureSecret { get; init; } = string.Empty;
+    public List<AuthServiceOptionsUser> Users { get; init; } = new List<AuthServiceOptionsUser>();
 }
 public class AuthService(IOptions<AuthServiceOptions> options) : IAuthService
 {
     public bool Authenticate(string username, string password) =>
-        username == "a" && password == "a";
+        options.Value.Users.Any(user => user.Username == username && user.Password == password);
+    
 
     public string GenerateToken(string username)
     {
